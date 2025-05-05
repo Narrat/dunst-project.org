@@ -3,7 +3,7 @@ title = "Documentation"
 type = "documentation"
 toc = "true"
 subtitle = "dunstify"
-lastdate = "2024-12-03"
+lastdate = "2025-01-01"
 descript = "Dunstify manual page"
 wiki = false
 css = [ "documentation.css" ]
@@ -93,7 +93,13 @@ css = [ "documentation.css" ]
 <p>Path to the icon to be sent as raw image data.</p>
 
 </dd>
-<dt id="c---capabilities"><b>-c, --capabilities</b></dt>
+<dt id="c---category-TYPE"><b>-c, --category=TYPE</b></dt>
+<dd>
+
+<p>The category of this notification.</p>
+
+</dd>
+<dt id="capabilities"><b>--capabilities</b></dt>
 <dd>
 
 <p>Print the server capabilities and exit.</p>

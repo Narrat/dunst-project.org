@@ -4,6 +4,22 @@ title = "Release Notes"
 type = "page"
 +++
 
+## Dunst v1.12.2 <div class="flabel"><i class="fa fa-refresh"></i> [Changelog]({{< ref "/changelog#v1.12.2" >}})</div> {#v1.12.2 .spaced}
+***
+
+
+This is the first release of 2025 and comes with an important fix to
+dunstify. With the roll out of libnotify v0.8.4, older version of dunstify
+started to not compile or crash when using the -r flag.
+
+If your distribution has updated libnotify, you should update dunstify as soon
+as possible to resolve these issues.
+
+Other changes include the addition of three dbus signals, the --category
+option for dunstify, the use of SOURCE_DATE_EPOCH for reproducible builds.
+
+For more details take a look at the changelog for all the fixes and improvements.
+
 ## Dunst v1.12.0 <div class="flabel"><i class="fa fa-refresh"></i> [Changelog]({{< ref "/changelog#v1.12.0" >}})</div> {#v1.12.0 .spaced}
 ***
 

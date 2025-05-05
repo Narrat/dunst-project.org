@@ -1,12 +1,15 @@
 +++
-weight = 3
-title = "FAQ"
-menu = "main"
-type = "page"
+title = "Documentation"
+type = "documentation"
 toc = "true"
+subtitle = "FAQ"
+lastdate = "2025-05-05"
+descript = "FAQ wiki page"
+wiki = true
+weight = 3
+css = [ "documentation.css" ]
 +++
-
-# Common problems
+# Troubleshooting
 
 ## Errors about missing or failing to open a display
 
@@ -70,15 +73,33 @@ If you want to switch back to dunst again, first define `SERVICE=org.knopwob.dun
 
 For more info, see the discussion in [#363](https://github.com/dunst-project/dunst/issues/363).
 
-# Mouse operations
-
 ## Clicking on a notification with a message like "click here" does nothing
 
 Regular left click on dunst is assigned to the action "close the notification" by default. To invoke the default action for the notification, please try middle click or executing a command line `dunstctl action` via a custom keyboard shortcut instead.
 
 If you like the behavior similar to the one on other platforms like Windows (regular left click to invoke the default action), setting [the option `mouse_left_click` in the dunstrc](https://github.com/dunst-project/dunst/blob/732227eff5df7afa3f44bc7f2cc661b22b4e3f0b/dunstrc#L273) to `do_action, close_current` will help you.
 
-# Special usages
+
+****
+
+# Common use cases
+
+## Replacing the same notification (or dedicating an id)
+
+If you just want to replace a notification you can use the `-r` option for notify-send with the
+old notification's id.
+However, if you want to dedicate a specific notification for something like a volume/brightness/music indicator,
+there is a better way to do this.
+
+Instead of using big numbers as ids for `-r`, dunst offers "stack tags" (from [#552](https://github.com/dunst-project/dunst/pull/552)).
+When a tagged notification is received it replaces the older one with the same stack tag.
+To use this feature you just need to pass to dunstify/notify-send the hint `x-dunst-stack-tag`.
+The hint `x-canonical-private-synchronous` is supported as an alias for the former.
+
+```
+dunstify -h string:x-dunst-stack-tag:whatever -i folders hello
+dunstify -h string:x-canonical-private-synchronous:whatever hello2
+```
 
 ## Sending notifications from another user (root)
 
@@ -91,3 +112,5 @@ alias notify-send="sudo -u USERNAME DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user
 ```
 
 Any other combination, executing `notify-send` with the valid `DBUS_SESSION_BUS_ADDRESS`-variable and user should work.
+
+On the [arch wiki](https://wiki.archlinux.org/title/Desktop_notifications#Send_notifications_to_another_user) you can find alternative approaches using `systemd-run` and [`systembus-notify`](https://github.com/rfjakob/systembus-notify).

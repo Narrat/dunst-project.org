@@ -3,7 +3,7 @@ title = "Documentation"
 type = "documentation"
 toc = "true"
 subtitle = "Dependencies"
-lastdate = "2024-12-04"
+lastdate = "2025-01-13"
 descript = "Dependencies wiki page"
 wiki = true
 weight = 1
@@ -28,6 +28,9 @@ Additionally, `gdk-pixbuf` has `librsvg` as an **optional runtime dependency** (
 
 NOTE: dunstctl uses `busctl` for displaying rules and history. This command is *usually* provided by systemd.
 In systems without systemd this can be installed with [elogind](https://github.com/elogind/elogind) or [basu](https://sr.ht/~emersion/basu/).
+
+IMPORTANT: To work correctly dunst needs a font. Also, without a font the test suite will fail in strange ways (see #1404).
+For maintainers, it is recommended to add a test/soft dependency on a virtual font package.
 
 ## Debian and Ubuntu
 

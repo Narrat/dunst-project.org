@@ -6,6 +6,25 @@ type = "page"
 +++
 
 
+## 1.12.2 -- 2025-03-05 <div class="flabel"><i class="fa fa-sticky-note"></i> [Release Notes]({{< ref "/release#v1.12.2" >}})</div> {#v1.12.2 .spaced}
+****
+
+### Added
+- Add `urgency`, `stack_tag` and `urls` to dunstctl history ([#1425](https://github.com/dunst-project/dunst/issues/1425), [#1426](https://github.com/dunst-project/dunst/issues/1426))
+- Add `--category` to dunstify (also change `-c` behaviour) ([#1429](https://github.com/dunst-project/dunst/issues/1429))
+- Add dbus signals `NotificationHistoryRemoved`, `NotificationHistoryCleared` and `ConfigReloaded` ([#1405](https://github.com/dunst-project/dunst/issues/1405), [#1277](https://github.com/dunst-project/dunst/issues/1277))
+
+### Changed
+- Allow to override build date with `SOURCE_DATE_EPOCH` ([#1435](https://github.com/dunst-project/dunst/issues/1435))
+- Flush after printing id in dunstify
+
+### Fixed
+- IMPORTANT: Resolve incompatibility between dunstify and  libnotify-0.8.4 ([#1443](https://github.com/dunst-project/dunst/issues/1443), [#1445](https://github.com/dunst-project/dunst/issues/1445), [#1449](https://github.com/dunst-project/dunst/issues/1449))
+- Fix mixup of `bool` and `gboolean` that caused problems in s390x ([#1421](https://github.com/dunst-project/dunst/issues/1421), [#1422](https://github.com/dunst-project/dunst/issues/1422))
+- Fix some printf warnings and int/gint/size_t mixed uses ([#1424](https://github.com/dunst-project/dunst/issues/1424))
+- Fix the scaling of the progress bar gradient ([#1447](https://github.com/dunst-project/dunst/issues/1447))
+- Actually reload old config files upon `dunstctl reload` ([#1447](https://github.com/dunst-project/dunst/issues/1447))
+
 ## 1.12.1 -- 2024-12-17 <div class="flabel"><i class="fa fa-sticky-note"></i> [Release Notes]({{< ref "/release#v1.12.1" >}})</div> {#v1.12.1 .spaced}
 ****
 

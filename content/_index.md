@@ -138,7 +138,7 @@ customize to perfection.
 Please use the [issue tracker](https://github.com/dunst-project/dunst/issues)
 on GitHub to send us bug reports or feature requests.
 
-Before reporting please refer to the [FAQ]({{< ref "/faq" >}} "Frequently Asked Questions") and
+Before reporting please refer to the [FAQ]({{< ref "/documentation/faq" >}} "Frequently Asked Questions") and
 [documentation]({{< ref "/documentation" >}} "Documentation").
 
 ## **Maintainers**
