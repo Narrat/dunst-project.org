@@ -3,7 +3,7 @@ title = "Documentation"
 type = "documentation"
 toc = "true"
 subtitle = "dunst(5)"
-lastdate = "2024-12-12"
+lastdate = "2025-06-27"
 descript = "Dustrc manual page"
 wiki = false
 menu = "main"
@@ -30,6 +30,7 @@ css = [ "documentation.css" ]
       <li><a href="#Global-section">Global section</a></li>
       <li><a href="#Keyboard-shortcuts-X11-only">Keyboard shortcuts (X11 only)</a></li>
       <li><a href="#Urgency-sections">Urgency sections</a></li>
+      <li><a href="#Experimental-section">Experimental section</a></li>
     </ul>
   </li>
   <li><a href="#DUNSTCTL">DUNSTCTL</a></li>
@@ -62,19 +63,25 @@ css = [ "documentation.css" ]
 
 <p>See RULES for more details.</p>
 
-<p>All experimental settings are marked with <i>Experimental</i>.</p>
+<p>The &quot;experimental&quot; section contains experimental and unstable settings. These options can change in breaking ways between releases. If you find a problem with these new features, make sure to report it.</p>
 
 <h2 id="Global-section">Global section</h2>
 
 <dl>
 
+<dt id="default_pause_level-values:-0-100-default:-0"><b>default_pause_level</b> (values: [0-100], default: 0)</dt>
+<dd>
+
+<p>Specify a pause level to be set on dunst startup. Notifications are only shown if their urgency level is higher than the pause level. See <b>override_pause_level</b> for more information.</p>
+
+</dd>
 <dt id="monitor-default:-0"><b>monitor</b> (default: 0)</dt>
 <dd>
 
 <p>Specifies on which monitor the notifications should be displayed in, either by name or by number, starting from 0. See the <b>follow</b> setting.</p>
 
 </dd>
-<dt id="follow-values:-none-mouse-keyboard-default:-none"><b>follow</b> (values: [none/mouse/keyboard] default: none)</dt>
+<dt id="follow-values:-none-mouse-keyboard-default:-none"><b>follow</b> (values: [none/mouse/keyboard], default: none)</dt>
 <dd>
 
 <p>Defines where the notifications should be placed in a multi-monitor setup. All values except <i>none</i> override the <b>monitor</b> setting.</p>
@@ -177,7 +184,7 @@ center
 right-center</code></pre>
 
 </dd>
-<dt id="offset-format:-horizontal-vertical"><b>offset</b> format: (horizontal, vertical)</dt>
+<dt id="offset-format:-horizontal-vertical-default:-10-50"><b>offset</b> (format: (horizontal, vertical), default: (10, 50))</dt>
 <dd>
 
 <p>Respectively the horizontal and vertical offset in pixels from the corner of the screen specified by <b>origin</b>. A negative offset will lead to the notification being off screen.</p>
@@ -192,7 +199,7 @@ offset = (10, 300) # a margin of 10 pixels from the right and 300 pixels from th
 <pre><code>offset = 10x300</code></pre>
 
 </dd>
-<dt id="scale-default:-0-X11-only"><b>scale</b> (default: 0, X11 only)</dt>
+<dt id="scale-default:-0-X11-only"><b>scale</b> (default: 0) (X11 only)</dt>
 <dd>
 
 <p>Specifies a scale factor for dimensions to adapt notifications to HiDPI screens. This scales the notification geometry and it&#39;s contents. It is not recommended to use a fractional scaling factor, as this may result in things being one pixel off. Try to use a whole number scaling factor and adjust the font size and other sizes as needed. If 0 is specified, the scale factor is auto-detected.</p>
@@ -338,7 +345,7 @@ horizontal_padding=10</code></pre>
 <p>This setting requires a compositor and any applications displayed between the gaps are not currently clickable.</p>
 
 </dd>
-<dt id="separator_color-values:-auto-foreground-frame-RRGGBB-default:-frame"><b>separator_color</b> (values: [auto/foreground/frame/#RRGGBB] default: frame)</dt>
+<dt id="separator_color-values:-auto-foreground-frame-RRGGBB-default:-frame"><b>separator_color</b> (values: [auto/foreground/frame/#RRGGBB], default: frame)</dt>
 <dd>
 
 <p>Sets the color of the separator line between two notifications.</p>
@@ -433,9 +440,9 @@ horizontal_padding=10</code></pre>
 
 <p>Specifies how the various attributes of the notification should be formatted on the notification window.</p>
 
-<p>Regardless of the status of the <b>markup</b> setting, any markup tags that are present in the format will be parsed. Note that because of that, if a literal ampersand (&amp;) is needed it needs to be escaped as &#39;&amp;amp;&#39;</p>
+<p>Regardless of the status of the <b>markup</b> setting, any markup tags that are present in the format will be parsed. Note that because of that, if a literal ampersand (&amp;) is needed it needs to be escaped as &#39;&amp;amp;&#39;.</p>
 
-<p>If &#39;\n&#39; is present anywhere in the format, it will be replaced with a literal newline.</p>
+<p>If &#39;\n&#39; or &#39;\t&#39; is present anywhere in the format, it will be replaced with a literal newline or tab respectively.</p>
 
 <p>If any of the following strings are present, they will be replaced with the equivalent notification attribute.</p>
 
@@ -455,6 +462,14 @@ horizontal_padding=10</code></pre>
 <dd>
 
 </dd>
+<dt id="c-category"><b>%c</b> category</dt>
+<dd>
+
+</dd>
+<dt id="S-stack_tag"><b>%S</b> stack_tag</dt>
+<dd>
+
+</dd>
 <dt id="i-iconname-including-its-path"><b>%i</b> iconname (including its path)</dt>
 <dd>
 
@@ -471,7 +486,7 @@ horizontal_padding=10</code></pre>
 <dd>
 
 </dd>
-<dt id="Literal"><b>%%</b> Literal %</dt>
+<dt id="literal"><b>%%</b> literal %</dt>
 <dd>
 
 </dd>
@@ -539,7 +554,7 @@ horizontal_padding=10</code></pre>
 
 <p>If the theme inherits from other themes, they will be used as a backup.</p>
 
-<p>This setting is experimental and not enabled by default. See <b>enable_recursive_icon_lookup</b> for how to enable it.</p>
+<p>This setting is not enabled by default. See <b>enable_recursive_icon_lookup</b> for how to enable it.</p>
 
 </dd>
 <dt id="enable_recursive_icon_lookup-default:-false"><b>enable_recursive_icon_lookup</b> (default: false)</dt>
@@ -636,7 +651,7 @@ horizontal_padding=10</code></pre>
 <li><p><code>mouse_left_click=close_current</code></p>
 
 </li>
-<li><p><code>mouse_middle_click=do_action, close_current</code></p>
+<li><p><code>mouse_middle_click=do_action, remove_current</code></p>
 
 </li>
 <li><p><code>mouse_right_click=close_all</code></p>
@@ -702,7 +717,7 @@ horizontal_padding=10</code></pre>
 
 <p>A notification will appear whenever notification&#39;s <i>override_pause_level</i> is greater than the paused level. Setting this to values other than 0 allows you to create partial pause modes, where more urgent notifications get through, but less urgent stay paused.</p>
 
-<p>For example, when you can set a low battery noficiation&#39;s override_pause_level to 60 and then set dunst&#39;s pause level to 60. This will cause dunst to only show battery level notification (and other notifications with override_pause_level &gt;= 60), while suspending others.</p>
+<p>For example, when you can set a low battery notification&#39;s override_pause_level to 60 and then set dunst&#39;s pause level to 60. This will cause dunst to only show battery level notification (and other notifications with override_pause_level &gt;= 60), while suspending others.</p>
 
 </dd>
 </dl>
@@ -754,6 +769,18 @@ horizontal_padding=10</code></pre>
 <p>See the example configuration file for examples.</p>
 
 <p>Old version of dunst allowed changing the colors of different urgencies through command line options. This has been long removed in favour of RULES, see issue #328.</p>
+
+<h2 id="Experimental-section">Experimental section</h2>
+
+<dl>
+
+<dt id="per_monitor_dpi-default:-false"><b>per_monitor_dpi</b> (default: false)</dt>
+<dd>
+
+<p>Use different DPI for each monitor. This setting is currently implemented only for X11.</p>
+
+</dd>
+</dl>
 
 <h1 id="DUNSTCTL">DUNSTCTL</h1>
 
@@ -826,7 +853,7 @@ horizontal_padding=10</code></pre>
 
 <dl>
 
-<dt id="appname-discouraged-see-desktop_entry"><code>appname</code> (discouraged, see desktop_entry)</dt>
+<dt id="appname-see-also-desktop_entry"><code>appname</code> (see also desktop_entry)</dt>
 <dd>
 
 <p>The name of the application as reported by the client. Be aware that the name can often differ depending on the locale used.</p>
@@ -1162,75 +1189,93 @@ horizontal_padding=10</code></pre>
 
 <dl>
 
-<dt id="fgcolor"><b>fgcolor</b></dt>
+<dt id="fgcolor-type:-string"><b>fgcolor</b> (type: string)</dt>
 <dd>
 
 <p>Foreground color.</p>
 
 </dd>
-<dt id="bgcolor"><b>bgcolor</b></dt>
+<dt id="bgcolor-type:-string"><b>bgcolor</b> (type: string)</dt>
 <dd>
 
 <p>Background color.</p>
 
 </dd>
-<dt id="frcolor"><b>frcolor</b></dt>
+<dt id="frcolor-type:-string"><b>frcolor</b> (type: string)</dt>
 <dd>
 
 <p>Frame color.</p>
 
 </dd>
-<dt id="hlcolor"><b>hlcolor</b></dt>
+<dt id="hlcolor-type:-string-or-string-array"><b>hlcolor</b> (type: string or string array)</dt>
 <dd>
 
 <p>Highlight color.</p>
 
 </dd>
-<dt id="value"><b>value</b></dt>
+<dt id="value-type:-int-or-uint"><b>value</b> (type: int or uint)</dt>
 <dd>
 
 <p>Progress value.</p>
 
 </dd>
-<dt id="image-path"><b>image-path</b></dt>
+<dt id="image-path-type:-string"><b>image-path</b> (type: string)</dt>
 <dd>
 
 <p>Icon name. This may be a path or just the icon name.</p>
 
+<p>The alias <b>image_path</b> is also supported.</p>
+
 </dd>
-<dt id="image-data"><b>image-data</b></dt>
+<dt id="image-data-type:-variant"><b>image-data</b> (type: variant)</dt>
 <dd>
 
 <p>A stream of raw image data.</p>
 
+<p>The aliases <b>image_data</b> and <b>icon_data</b> are also supported.</p>
+
 </dd>
-<dt id="category1"><b>category</b></dt>
+<dt id="category-type:-string"><b>category</b> (type: string)</dt>
 <dd>
 
 <p>The category.</p>
 
 </dd>
-<dt id="desktop-entry"><b>desktop-entry</b></dt>
+<dt id="desktop-entry-type:-string"><b>desktop-entry</b> (type: string)</dt>
 <dd>
 
 <p>The desktop entry.</p>
 
 </dd>
-<dt id="transient"><b>transient</b></dt>
+<dt id="transient-type:-int-or-boolean"><b>transient</b> (type: int or boolean)</dt>
 <dd>
 
 <p>The transient value.</p>
+
+</dd>
+<dt id="x-dunst-stack-tag-type:-string"><b>x-dunst-stack-tag</b> (type: string)</dt>
+<dd>
+
+<p>The stack tag of the notification. A tagged notification will replace an earlier notification with the same tag.</p>
+
+</dd>
+<dt id="x-canonical-private-synchronous-type:-string"><b>x-canonical-private-synchronous</b> (type: string)</dt>
+<dd>
+
+<p>Alias for <b>x-dunst-stack-tag</b>.</p>
 
 </dd>
 </dl>
 
 <p>Some examples:</p>
 
-<pre><code>notify-send -h string:fgcolor:#ff4444
+<pre><code>notify-send -h string:fgcolor:#ff4444 &quot;hello&quot;
 
-notify-send -h string:bgcolor:#4444ff -h string:fgcolor:#ff4444 -h string:frcolor:#44ff44
+notify-send -h string:bgcolor:#4444ff -h string:fgcolor:#ff4444 -h string:frcolor:#44ff44 &quot;:)&quot;
 
-notify-send -h int:value:42 &quot;Working ...&quot;</code></pre>
+notify-send -h int:value:42 &quot;Working ...&quot;
+
+notify-send -h string:x-canonical-private-synchronous:volume &quot;Muted&quot;</code></pre>
 
 <h1 id="ACTIONS">ACTIONS</h1>
 

@@ -3,7 +3,7 @@ title = "Documentation"
 type = "documentation"
 toc = "true"
 subtitle = "dunst(1)"
-lastdate = "2024-12-03"
+lastdate = "2023-11-13"
 descript = "Dunst manual page"
 wiki = false
 css = [ "documentation.css" ]
@@ -151,7 +151,7 @@ css = [ "documentation.css" ]
 
 <h1 id="CONFIGURATION">CONFIGURATION</h1>
 
-<p>A default configuration file is included (usually ##SYSCONFDIR##/dunst/dunstrc) and serves as the least important configuration file. Note: this was previously /usr/share/dunst/dunstrc. You can edit this file to change the system-wide defaults or copy it to a more important location to override its settings. See the FILES section for more details on where dunst searches for its configuration files and how settings get applied.</p>
+<p>A default configuration file is included (usually /usr/local/etc/xdg/dunst/dunstrc) and serves as the least important configuration file. Note: this was previously /usr/share/dunst/dunstrc. You can edit this file to change the system-wide defaults or copy it to a more important location to override its settings. See the FILES section for more details on where dunst searches for its configuration files and how settings get applied.</p>
 
 <p>See dunst(5) for all possible settings.</p>
 
@@ -190,7 +190,7 @@ notify-send -h int:value:42 &quot;Working ...&quot;</code></pre>
 <dt id="XDG_CONFIG_DIRS"><code>$XDG_CONFIG_DIRS</code></dt>
 <dd>
 
-<p>This, like <code>$PATH</code> for instance, is a :-separated list of base directories in <i>descending order of importance</i>. (<i>##SYSCONFDIR##</i> if unset or empty)</p>
+<p>This, like <code>$PATH</code> for instance, is a :-separated list of base directories in <i>descending order of importance</i>. (<i>/usr/local/etc/xdg</i> if unset or empty)</p>
 
 </dd>
 </dl>
